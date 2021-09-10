@@ -19,7 +19,7 @@ import utils.DBUtil;
 @WebServlet("/update")
 public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -53,6 +53,7 @@ public class UpdateServlet extends HttpServlet {
             // データベースを更新
             em.getTransaction().begin();
             em.getTransaction().commit();
+            request.getSession().setAttribute("flush", "更新が完了しました。");
             em.close();
 
             // セッションスコープ上の不要になったデータを削除
